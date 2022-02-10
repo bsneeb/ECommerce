@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Tic Tac Toe </title>
+    </head>
+
+    <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                grid-template-rows: auto auto auto;
+                grid-gap: 2%;
+                margin: auto;
+                padding: 2%;
+                background-color: grey;
+                text-align: center;
+                
+                width: 300px;
+                
+            }
+            .button-container{
+                display: grid;
+                grid-template-columns: auto auto auto;
+                grid-gap:2%;
+                text-align: center;
+                color:purple;
+                width: 300px;
+                margin:auto;
+                margin-top: 10px;
+            }
+            .position {
+                color: blue;
+                background-color: aliceblue;
+                width: 75px;
+                height: 75px;
+                font-size: 3em;
+                cursor: pointer;
+            }
+            h1 {
+                text-align: center;
+                color:steelblue;
+            }
+            body {
+                background-color: beige;
+            }
+    </style>
+    <body>
+
+        <h1> TIC TAC TOE </h1>
+
+        <div class=grid-container>
+            <div class=position id=box1 onclick="placeMove(1)"/> </div>
+            <div class=position id=box2 onclick="placeMove(2)"/> </div>
+            <div class=position id=box3 onclick="placeMove(3)"/> </div>
+            <div class=position id=box4 onclick="placeMove(4)"/> </div>
+            <div class=position id=box5 onclick="placeMove(5)"/> </div>
+            <div class=position id=box6 onclick="placeMove(6)"/> </div>
+            <div class=position id=box7 onclick="placeMove(7)"/> </div>
+            <div class=position id=box8 onclick="placeMove(8)"/> </div>
+            <div class=position id=box9 onclick="placeMove(9)"/> </div>
+
+        </div>
+        <div class=button-container>
+            <input type="button" value="Start Game" onclick="startGame()"/>
+            <input type="button" value="Reset Game" onclick="resetGame()"/>
+            <div id=turn> Turn: </div>
+        </div>
+
+    </body>
+    <script>
+
+        let moves = 0;  // Count moves for if there is a tie at the end
+        let turn = 0;   // Even = 0 starts, odd = X starts
+
+        /* Initialize the game */
+        function startGame(){
+            playTurn(turn);
+        }
+
+        /* Play the turn based on the last move */
+        function playTurn(tile){
+            switch(tile){
+                case (0):
+                    document.getElementById("turn").innerHTML = "Turn: O"
+                    break;
+                case (1):
+                    document.getElementById("turn").innerHTML = "Turn: X"
+                    break;
+            }
+        }
+
+        /* Reset board and all variables */
+        function resetGame(){
+            document.getElementById("turn").innerHTML = "Game has been reset"
+            document.getElementById("box1").innerHTML = " ";
+            document.getElementById("box2").innerHTML = " ";
+            document.getElementById("box3").innerHTML = " ";
+            document.getElementById("box4").innerHTML = " ";
+            document.getElementById("box5").innerHTML = " ";
+            document.getElementById("box6").innerHTML = " ";
+            document.getElementById("box7").innerHTML = " ";
+            document.getElementById("box8").innerHTML = " ";
+            document.getElementById("box9").innerHTML = " ";
+            moves = 0;
+            turn = 0;
+        }
+
+        /* Change tile to be played */
+        function nextTurn(tile){
+            checkWin(tile)
+            if (tile === 'O'){
+                document.getElementById("turn").innerHTML = "Turn: X"
+                turn = 1;
+            }
+            else if (tile === 'X'){
+                document.getElementById("turn").innerHTML = "Turn: O"
+                turn = 0;
+            }
+        }
+
+        /* Take in the position selected and place tile */
+        /* 
+            1 2 3
+            4 5 6 
+            7 8 9
+        */
+        function placeMove(pos){
+            let t = turn;
+            let tile = 0;
+            if (t == 0){
+                tile = 'O'
+            }
+            else if (t == 1){
+                tile = 'X'
+            }
+            switch(pos){
+                case 1:
+                    if (document.getElementById("box1").innerHTML != " "){
+                        alert('invalid move')
+                        nextTurn(turn)
+                        break;
+                    }
+                    document.getElementById("box1").innerHTML = tile;
+                    nextTurn(tile);
+                    break;
+                case 2:
+                    if (document.getElementById("box2").innerHTML != " "){
+                        alert('invalid move')
+                        nextTurn(turn)
+                        break;
+                    }
+                    document.getElementById("box2").innerHTML = tile;
+                    nextTurn(tile);
+                    break;
+                case 3:
+                    if (document.getElementById("box3").innerHTML != " "){
+                        alert('invalid move')
+                        nextTurn(turn)
+                        break;
+                    }
+                    document.getElementById("box3").innerHTML = tile;
+                    nextTurn(tile);
+                    break;
+                case 4:
+                    if (document.getElementById("box4").innerHTML != " "){
+                        alert('invalid move')
+                        nextTurn(turn)
+                        break;
+                    }
+                    document.getElementById("box4").innerHTML = tile;
+                    nextTurn(tile);
+                    break;
+                case 5:
+                    if (document.getElementById("box5").innerHTML != " "){
+                        alert('invalid move')
+                        nextTurn(turn)
+                        break;
+                    }
+                    document.getElementById("box5").innerHTML = tile;
+                    nextTurn(tile);
+                    break;
+                case 6:
+                    if (document.getElementById("box6").innerHTML != " "){
+                        alert('invalid move')
+                        nextTurn(turn)
+                        break;
+                    }
+                    document.getElementById("box6").innerHTML = tile;
+                    nextTurn(tile);
+                    break;
+                case 7:
+                    if (document.getElementById("box7").innerHTML != " "){
+                        alert('invalid move')
+                        nextTurn(turn)
+                        break;
+                    }
+                    document.getElementById("box7").innerHTML = tile;
+                    nextTurn(tile);
+                    break;
+                case 8:
+                    if (document.getElementById("box8").innerHTML != " "){
+                        alert('invalid move')
+                        nextTurn(turn)
+                        break;
+                    }
+                    document.getElementById("box8").innerHTML = tile;
+                    nextTurn(tile);
+                    break;
+                case 9:
+                    if (document.getElementById("box9").innerHTML != " "){
+                        alert('invalid move')
+                        nextTurn(turn)
+                        break;
+                    }
+                    document.getElementById("box9").innerHTML = tile;
+                    nextTurn(tile);
+                    break;
+            }
+        }
+
+        /* Check if X or O wins each time one is placed */
+        function checkWin(t){
+            moves = moves + 1;
+            let pos1 = document.getElementById("box1").innerHTML
+            let pos2 = document.getElementById("box2").innerHTML
+            let pos3 = document.getElementById("box3").innerHTML
+            let pos4 = document.getElementById("box4").innerHTML
+            let pos5 = document.getElementById("box5").innerHTML
+            let pos6 = document.getElementById("box6").innerHTML
+            let pos7 = document.getElementById("box7").innerHTML
+            let pos8 = document.getElementById("box8").innerHTML
+            let pos9 = document.getElementById("box9").innerHTML
+
+            let winString = ("WINNER IS " + t)
+
+            if (pos1 === t && pos2 === t && pos3 === t){
+                alert(winString)
+            } else if (pos4 === t && pos5 === t && pos6 === t){
+                alert(winString)
+            } else if (pos7 === t && pos8 === t && pos9 === t){
+                alert(winString)
+            } else if (pos1 === t && pos4 === t && pos7 === t){
+                alert(winString)
+            } else if (pos2 === t && pos5 === t && pos8 === t){
+                alert(winString)
+            } else if (pos3 === t && pos6 === t && pos9 === t){
+                alert(winString)
+            } else if (pos1 === t && pos5 === t && pos9 === t){
+                alert(winString)
+            } else if (pos7 === t && pos5 === t && pos3 === t){
+                alert(winString)
+            } else if (moves === 9){
+                alert("TIE GAME")
+            }
+        }
+
+    </script>
+</html>

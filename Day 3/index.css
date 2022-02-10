@@ -1,0 +1,17 @@
+/* Comment in CSS */
+p strong {
+    font-family: Arial, Verdana, sans-serif;
+    color: red;
+}
+p:first-letter {
+    color: brown;
+}
+p:first-line{
+    color:blueviolet;
+}
+h1, h2, h3, h4 {
+    color: blue;
+}
+a:link { color: green; }
+a:visited { color: red; }
+a:hover { color: yellow; }

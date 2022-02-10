@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Craps Game </title>
+    </head>
+
+    <style>
+        body{
+            background-color: grey;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+    </style>
+
+
+    <script>
+        
+        const WON = 0, LOST = 1, CONTINUE_ROLLING = 2; 
+        let firstRoll = true,           // true if first roll
+        myPoint = 0,           // point if no win/loss on first roll
+        gameStatus = CONTINUE_ROLLING;  // game not over yet
+        let totalWins = 0;
+        let totalLosses = 0;
+
+
+
+        function play() {
+            let sumOfDice = rollDice();
+
+            if (firstRoll){
+                switch (sumOfDice){
+                    case 7: case 11:
+                        gameStatus = WON;
+                        document.getElementById("point").innerHTML = myPoint;
+                        document.getElementById("sum").innerHTML = sumOfDice;
+                        break;
+                    case 2: case 3: case 12:
+                        gameStatus = LOST;
+                        document.getElementById("point").innerHTML = myPoint;
+                        document.getElementById("sum").innerHTML = sumOfDice;
+                        break;
+                    default:
+                        myPoint = myPoint + 1;
+                        document.getElementById("point").innerHTML = myPoint;
+                        document.getElementById("sum").innerHTML = sumOfDice;
+                        gameStatus = CONTINUE_ROLLING;
+                }
+            }
+            else {
+                if (sumOfDice == myPoint) {
+                    gameStatus = WON;
+                }
+                else if (sumOfDice == 7){
+                    gameStatus = LOST;
+
+                }
+            }
+            if (gameStatus == 0){
+                document.getElementById("comment").innerHTML = "YOU WIN";
+                document.getElementById("comment").style.color="green"
+                totalWins = totalWins + 1;
+                document.getElementById("totalWins").innerHTML = totalWins;
+            } else if (gameStatus == 1){
+                document.getElementById("comment").innerHTML = "YOU LOSE";
+                document.getElementById("comment").style.color="red"
+                totalLosses = totalLosses + 1;
+                document.getElementById("totalLosses").innerHTML = totalLosses;
+            } else if (gameStatus == 2){
+                document.getElementById("comment").innerHTML = "Roll Again!";
+                rollDice();
+            }
+        } 
+
+        function rollDice() {
+            let die1 = Math.floor(1+Math.random() * 6);
+            let die2 = Math.floor(1+Math.random() * 6);
+            document.getElementById("firstDie").innerHTML = die1
+            document.getElementById("secondDie").innerHTML = die2
+            return die1 + die2;
+        }
+        function reset(){
+            firstRoll = true,           // true if first roll
+            myPoint = 0,           // point if no win/loss on first roll
+            gameStatus = CONTINUE_ROLLING;  // game not over yet
+            document.getElementById("comment").style.color="black"
+            document.getElementById("point").innerHTML = "";
+            document.getElementById("firstDie").innerHTML = "";
+            document.getElementById("secondDie").innerHTML = "";
+            document.getElementById("sum").innerHTML = "";
+            document.getElementById("comment").innerHTML = "Roll Dice to begin";
+        }
+        function resetScore(){
+            document.getElementById("totalWins").innerHTML = 0;
+            document.getElementById("totalLosses").innerHTML = 0;
+        }
+    
+
+    </script>
+    <body>
+
+        <h1> Craps Game </h1>
+        <table>
+            <tr><td> Die 1 </td> <td id=firstDie></td></tr>
+            <tr><td> Die 2 </td> <td id=secondDie></td></tr>
+            <tr><td> Sum </td> <td id=sum></td></tr>
+            <tr><td> Point </td> <td id=point></td></tr>
+            <tr> 
+            <td colspan=2>
+                <input type=button id=roll value=Roll onclick=play()>
+                <input type=button id=reset value=Reset onclick=reset()>
+            </td>
+            </tr>
+            <tr><td colspan=2 id=comment> Roll Dice to Begin </td></tr>
+            <tr><td>Total Wins:</td><td colspan=2 id=totalWins> 0 </td></tr>
+            <tr><td>Total Losses:</td><td colspan=2 id=totalLosses> 0 </td></tr>
+            <td colspan=2>
+                <input type=button id=resetScore value=ResetScore onclick=resetScore()>
+            </td>
+
+
+
+
+        </table>
+
+    </body>
+</html>

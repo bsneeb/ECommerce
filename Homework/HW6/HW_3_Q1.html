@@ -1,0 +1,66 @@
+<!-- Brady Neeb -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> HW 3 Q1 </title>
+    </head>
+
+    <script>
+
+        let max = 50;
+        let count = 0;
+
+        // Add a element to list
+        function addToList() {
+            if (count >= max){
+                alert("TOO MANY ELEMENTS ON LIST")
+                return
+            }
+            let element = document.getElementById("input").value;
+            let newElement = document.createElement("li");
+            newElement.innerHTML = element;
+            document.getElementById("list").append(newElement)
+            count++;
+        }
+
+        // Delete last item on list
+        function deleteElement() {
+            let e = document.getElementById("list")
+            let countStr = String(count)
+            let del = document.getElementById(countStr)
+            e.removeChild(del)
+            count--;
+        }
+
+        // Initialize the list on page load
+        function initialize() {
+            count = 25;
+            for (let i = 1; i <= count; i++){
+                let inputString = "Item #"+i;
+                let newElement = document.createElement("li");
+                let iStr = String(i)
+                newElement.setAttribute("id",iStr)
+                newElement.innerHTML = inputString;
+
+                document.getElementById("list").append(newElement)
+            }
+        }
+
+    </script>
+    <body onload="initialize()">
+
+        <ul id="list">
+            
+        </ul>
+
+        <br>
+        <input id=input size=50>
+        <br>
+        <input id=addButton type=button value=Add onclick=addToList() />
+        <br>
+        <input id=deleteButton type=button value=Delete onclick=deleteElement() />
+
+
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Title bar </title>
+
+        <style>
+            body {
+                background-color: midnightblue;
+                font-family: sans-serif;
+                font-size: 150%;
+                margin-left: 20%;
+                margin-right: 20%;
+            }
+            h1 {
+                text-align:center;
+            }
+            form {
+                background-color: ghostwhite;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 5%;
+            }
+        </style>
+
+                
+        <script>
+
+            
+
+            function computePayment(){
+
+                let homeValue = parseFloat(document.getElementById("price").value);
+                let downPayment = parseFloat(document.getElementById("downPayment").value);
+                let interestRate = parseFloat(document.getElementById("interestRate").value) + 1;
+
+                let monthly = 12/100;
+                let principal = homeValue - downPayment;
+
+
+                if (document.getElementById("term15").checked)     
+                    n=15*12;
+                else {
+                    n=30*12;
+                }
+
+                
+
+                // let d = ((Math.pow((1+interestRate),n) - 1) / (interestRate*(Math.pow((1+interestRate), n))));
+
+                let d = (Math.pow(interestRate,n)-1) / (interestRate*(Math.pow(interestRate,n)))
+
+                let answer = principal/d;
+                answer = answer * monthly
+
+                document.getElementById("payment").innerHTML = Math.floor(answer);
+
+            }
+
+        </script>
+
+    </head>
+    <body>
+
+        <h1> Mortgage Calculator </h1>
+
+        <form>
+            <label for="price"> Home Price </label>
+            <input type="text" id="price" value="300000" size="30"> <br>
+            <label for="downPayment"> Down Payment </label>
+            <input type="text" id="downPayment" value="30000" size="30" maxlength="10"> <br>
+            <label for="interestRate"> Interest Rate </label>
+            <input type="text" id="interestRate" value=0.35 placeholder="Interest Rate"> <br>
+
+            <br> Mortgage Length <br>
+            <input type="radio" name="term" id="term15" value="15">
+            <label for="term15"> 15 Years </label> <br>
+            <!-- Just putting "15 Years" does not include the new line -->
+            <input type="radio" name="term" id="term30" value="30" checked>
+            <label for="term30"> 30 Years </label> <br>
+
+            <input type="button" value="Monthly Payment" onclick=computePayment()><br><br>
+
+            <label for="monthlyPayment"> Monthly Payment: </label>
+            <input type="text" id="monthlyPayment"> <br>
+            <br>
+
+
+        </form>
+
+        <span id="payment"></span>
+
+
+    </body>
+</html>

@@ -1,0 +1,116 @@
+<!-- Brady Neeb -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Javascript 3 #2 </title>
+    </head>
+
+
+    <script>
+            function checkFileFormat(){
+                let str1 = document.getElementById("input1").value
+                let re = /^(file)\d\W(txt)/;
+                if (re.test(str1)){
+                    document.getElementById("fileStatus").innerHTML = "Valid submission"
+                } else {
+                    document.getElementById("fileStatus").innerHTML = "Invalid submission"
+                }
+            }
+
+            function matchString(){
+                let str2 = document.getElementById("input2").value
+                let re = /^xy*z$/
+                if(re.test(str2)){
+                    document.getElementById("matchStatus").innerHTML = "Valid Submission"
+                } else {
+                    document.getElementById("matchStatus").innerHTML = "Invalid Submission"
+                }
+            }
+
+            function matchTime(){
+                let str3 = document.getElementById("input3").value
+                let re = /\d\d:\d\d/
+                if(re.test(str3) && str3[0] <= 2 && str3[3] <= 5){
+                    if (str3[0] == 2 && str3[1] <= 3){
+                        document.getElementById("matchTimeStatus").innerHTML = "Valid Submission"
+                    } else {
+                    document.getElementById("matchTimeStatus").innerHTML = "Invalid Submission"
+                    }
+                } 
+            }
+
+            function matchPhone(){
+                let str4 = document.getElementById("input4").value
+                let re = /^\d\d\d(-)\d\d\d(-)\d\d\d\d$/
+                if(re.test(str4)){
+                    document.getElementById("matchPhone").innerHTML = "Valid Submission"
+                } else {
+                    document.getElementById("matchPhone").innerHTML = "Invalid Submission"
+                }
+            }
+
+            function matchZip(){
+                let str5 = document.getElementById("input5").value
+                let re1 = /^\d\d\d\d\d(-)\d\d\d\d$/
+                let re2 = /^\d\d\d\d\d$/
+                if(re1.test(str5) || re2.test(str5)){
+                    document.getElementById("matchZip").innerHTML = "Valid Submission"
+                } else {
+                    document.getElementById("matchZip").innerHTML = "Invalid Submission"
+                }
+            }
+
+    </script>
+
+    <body>
+        <h4> Enter File Name with the format file#.txt: </h4>
+
+        <input id=input1 size=50> <br>
+        <input id=addButton type=button value="Check File Format" onclick=checkFileFormat() />
+        <p id=fileStatus> </p>
+
+        <br><br>
+        <p>-----------------------------------</p>
+        <br><br>
+
+        <h4> Enter a string that begins with x, ends with z, and has y's in the middle: </h4>
+
+        <input id=input2 size=50> <br>
+        <input id=addButton type=button value="Match the String" onclick=matchString() />
+        <p id=matchStatus> </p>
+
+        <br><br>
+        <p>-----------------------------------</p>
+        <br><br>
+
+        <h4> Enter a time in format HH:MM with hours in range 0-23 and minutes from 00-59 </h4>
+
+        <input id=input3 size=50> <br>
+        <input id=addButton type=button value="Time Check" onclick=matchTime() />
+        <p id=matchTimeStatus> </p>
+
+        <br><br>
+        <p>-----------------------------------</p>
+        <br><br>
+
+        <h4> Enter a phone number in the format XXX-XXX-XXXX: </h4>
+
+        <input id=input4 size=50> <br>
+        <input id=addButton type=button value="Match Phone #" onclick=matchPhone() />
+        <p id=matchPhone> </p>
+
+        <br><br>
+        <p>-----------------------------------</p>
+        <br><br>
+
+        <h4> Enter either a 5 digit or 9 digit zip code in format XXXXX or XXXXX-XXXX: </h4>
+
+        <input id=input5 size=50> <br>
+        <input id=addButton type=button value="Match Zip Code" onclick=matchZip() />
+        <p id=matchZip> </p>
+        
+        
+
+    </body>
+</html>

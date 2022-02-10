@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Price is Right </title>
+
+        <style>
+            body {
+                background-color: lime;
+            }
+            .grid-container {
+                display: grid;
+                grid-template-columns: auto auto auto auto auto auto;
+                grid-gap: 2%;
+                margin: 10px;
+                padding: 2%;
+                background-color: grey;
+                text-align: center;
+            }
+            h1, h2{
+                text-align: center;
+                font-family: fantasy;
+                font-size: 3em;
+                color: gold;
+                margin: 1;
+                text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+            }
+            .box {
+                background-color: darkgreen;
+                color: lightgreen;
+                text-align: center;
+                font-size: 3em;
+            }
+            .toprow{
+                grid-column: 1 / span 6;
+                text-align: center;
+            }
+            #bottom {
+                grid-column: 3 / span 2;
+                text-align: center;
+                grid-template-columns: auto auto auto;
+            }
+            #strikes {
+                color: red;
+                background-color: rgb(71, 5, 5);
+            }
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 25%;
+            }
+            h4 {
+                text-align: center;
+                
+            }
+            #start {
+                background-color: yellow;
+                font-size: 1em;
+                text-align: center;
+                grid-template-columns: auto;
+            }
+            .start-box {
+                text-align: center;
+                grid-row: 3;
+                grid-column: 6;
+                grid-template-rows: auto auto auto;
+            }
+            .button-container {
+                display: grid;
+                grid-template-columns: auto auto auto auto auto;
+                grid-gap: 2%;
+                margin: 10px;
+                padding: 2%;
+                background-color: grey;
+                text-align: center;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <img src=PIR.png width=400 alt=PIR class=center >
+        
+        <div class=grid-container>
+            <div class=toprow> <h2> 3 STRIKES </h2> </div> 
+            <div class=box> $ </div>
+            <div class=box id="fifth">  </div>
+            <div class=box id="fourth">  </div>
+            <div class=box id="third">  </div>
+            <div class=box id="second">  </div>
+            <div class=box id="first">  </div>
+            <div class=start-box id=start> 
+                <input type="button" value="Start New Game" onclick=shufflePrice()> <br>
+                <br>
+                <input type="button" value="Pull Number" onclick=getNumber()> <br>
+                
+            
+                <p id="value"> Value </p>
+
+                <div class=button-container>
+                    <input type="button" value="5" onclick="setNumber(0)"/>
+                    <input type="button" value="4" onclick="setNumber(1)"/>
+                    <input type="button" value="3" onclick="setNumber(2)"/>
+                    <input type="button" value="2" onclick="setNumber(3)"/>
+                    <input type="button" value="1" onclick="setNumber(4)"/>
+                </div>
+            </div>
+
+                <div class=grid-container id=bottom> 
+                    <div class=box id=strike1>  </div>
+                    <div class=box id=strike2>  </div>
+                    <div class=box id=strike3>  </div>
+                </div>           
+        </div>
+
+        <div> 
+            <h4 id="dummy"> dummy </h4> 
+        </div>
+    </body>
+    <script>
+        
+        let strikes = 0;
+        // let correctPrice = generateCorrectPrice();
+        // let shuffledPrice = 0;
+        let count = 0;
+
+        let correctPrice = new Array (1,2,3,4,5)
+        let shuffledPrice = new Array ('X',5,4,3,2,1,'X','X')
+
+
+        document.getElementById("dummy").innerHTML = correctPrice;
+
+        
+        // function generateCorrectPrice(){
+        //     let i = 0;
+        //     let val = 0;
+        //     let price = new Array(5);
+        //     for (i=0; i < 5; i++){
+        //         val = (Math.random()* 10)
+        //         val = Math.floor(val)
+        //         price[i] = val
+        //     }
+        //     //document.getElementById("dummy").innerHTML = price;
+        //     let p = price;
+        //     return p;
+        // }
+
+        // function shufflePrice(){
+        //     let temp = new Array(5)
+        //     temp = correctPrice
+        //     alert("in sp function" + correctPrice)
+        //     shuffledPrice = shufflePriceArray(temp)
+        // }
+
+        // function shufflePriceArray(p){
+        //     p.push('X')
+        //     p.push('X')
+        //     p.push('X')
+        //     let curId = p.length
+
+        //     while (0 != curId){
+        //         let randId = Math.floor(Math.random() * curId);
+        //         curId -= 1
+
+        //         let tmp = p[curId]
+        //         p[curId] = p[randId]
+        //         p[randId] = tmp
+        //     }
+        //     alert(p)
+        //     return p
+        // }
+
+        function getNumber(){
+            document.getElementById("value").innerHTML = shuffledPrice[count];
+
+            if (shuffledPrice[count] === 'X'){
+                strikes++;
+                putX(strikes);
+                if (strikes == 3){
+                    document.getElementById("dummy").innerHTML = "GAME OVER";
+                }
+            }
+            //check()
+        }
+
+        function shift(){
+            shuffledPrice.shift()
+        }
+
+
+        function putX(num){
+            switch(num){
+                case 1:
+                    document.getElementById("strike1").innerHTML = 'X';
+                    break;
+
+                case 2:
+                    document.getElementById("strike2").innerHTML = 'X';
+                    break;
+
+                case 3:
+                    // you lose
+                    document.getElementById("strike3").innerHTML = 'X';
+                    break;
+            }
+            shift()
+        }
+
+        function setNumber(num){
+            
+            let number = document.getElementById("value").innerHTML
+          
+            switch(num){
+                case 4:
+                    check(num)
+                    document.getElementById("first").innerHTML = number;
+                    break;
+
+                case 3:
+                    check(num)
+                    document.getElementById("second").innerHTML = number;
+                    break;
+
+                case 2:
+                    check(num)
+                    document.getElementById("third").innerHTML = number;
+                    break;
+
+                case 1:
+                    check(num)
+                    document.getElementById("fourth").innerHTML = number;
+                    break;
+
+                case 0:
+                    check(num)
+                    document.getElementById("fifth").innerHTML = number;
+                    break;
+        
+            }
+        }
+
+        function check(pos){
+
+        
+            let number = document.getElementById("value").innerHTML
+  
+
+            switch(pos){
+                case 4:
+                    if (number == correctPrice[4]){
+                        document.getElementById("dummy").innerHTML = 'CORRECT'
+                        shift()
+                    }
+                    break;
+                case 3:
+                    if (number == correctPrice[3]){
+                        document.getElementById("dummy").innerHTML = 'CORRECT'
+                        shift()
+                    }
+                    break;
+                case 2:
+                    if (number == correctPrice[2]){
+                        document.getElementById("dummy").innerHTML = 'CORRECT'
+                        shift()
+                    }
+                    break;
+                case 1:
+                    if (number == correctPrice[1]){
+                        document.getElementById("dummy").innerHTML = 'CORRECT'
+                        shift()
+                    }
+                    break;
+                case 0:
+                    if (number == correctPrice[0]){
+                        document.getElementById("dummy").innerHTML = 'CORRECT'
+                        shift()
+                    }
+                    break;
+                default:
+                    document.getElementById("dummy").innerHTML = 'INCORRECT'
+                    shift()
+
+            }
+
+        }
+
+        function setSecond(){
+            let second = parseFloat(document.getElementById("value").innerHTML)
+            document.getElementById("second").innerHTML = second;
+        }
+        function setThird(){
+            let third = parseFloat(document.getElementById("value").innerHTML)
+            document.getElementById("third").innerHTML = third;
+        }
+        function setFourth(){
+            let fourth = parseFloat(document.getElementById("value").innerHTML)
+            document.getElementById("fourth").innerHTML = fourth;
+        }
+        function setFifth(){
+            let fifth = parseFloat(document.getElementById("value").innerHTML)
+            document.getElementById("fifth").innerHTML = fifth;
+        }
+
+    </script>
+</html>

@@ -1,0 +1,48 @@
+h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+    background-color: grey;
+    color: whitesmoke;
+}
+
+
+ol, ul {
+    text-align: center;
+}
+
+li {
+    text-align: left;
+    list-style-position: inside;
+} 
+
+.toc {
+    text-align: center;
+    list-style-position: inside;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+
+.quiz {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.bio {
+    margin-left:300px;
+    margin-right:300px;
+}

@@ -1,0 +1,70 @@
+<!-- Brady Neeb -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> To Do List </title>
+    </head>
+
+    <style>
+        #list {
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+            position: relative;
+        }
+    </style>
+
+    <script>
+            // const myNodelist = document.querySelectorAll("li");
+                
+            // function myFunction() {
+            //     const myCollection = document.getElementsByTagName("li");
+            //     for (let i = 0; i < myCollection.length; i++) {
+            //         myCollection[i].style.color = "red";
+            //     }
+            // }
+
+            window.onload = function() {
+                let input = document.getElementById("input");
+
+
+                let add = document.getElementById("add");
+                add.onclick = addElement;
+
+            };
+
+
+            
+    
+            function addElement() {
+                let newElement = document.getElementById("input").value;
+                let element = document.createElement("li");
+                element.className = "element";
+                newElement.appendChild(element)
+            }
+    </script>
+
+
+    <body>
+        <h2>JavaScript HTML DOM</h2>
+
+        <div id="list">
+            <ul id="todo">
+                <li id="element">test</li>
+
+            </ul>
+        </div>
+        
+        
+        <textarea id="input"></textarea>
+        <br>
+        <button id="add">Try it</button>
+
+
+
+        
+
+    </body>
+
+</html>

@@ -1,0 +1,97 @@
+<!-- Brady Neeb -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Title bar </title>
+    </head>
+    <link rel=stylesheet type=text/css href=Skeleton.css />
+
+    <script>
+
+        // Global max variable
+        let maxZ = 1000;
+
+        window.onload = function() {
+            let squareArea = document.getElementById("squarearea");
+            let squareCount = parseInt(Math.random() * 150) + 30;
+            let dimention = 0;
+            for (let i = 0; i < squareCount; i++){
+                let square = document.createElement("div");
+                square.className = "square";
+                square.style.left = parseInt(Math.random() * 900) + "px";
+                square.style.top = parseInt(Math.random() * 600) + "px";
+                square.style.backgroundColor = getRandomColor();
+                let dimention = parseInt(Math.random() * 100) + "px"
+                square.style.height = dimention 
+                square.style.width = dimention
+                square.onclick = squareClick;
+                squareArea.appendChild(square);
+            }
+
+            let add = document.getElementById("add");
+            add.onclick = addSquare;
+            
+            let change = document.getElementById("colors");
+            change.onclick = changeColor;
+        };
+
+        function getRandomColor() {
+            let letters = "abcde";
+            let result = "#";
+            for (let i = 0; i < 6; i++){
+                result += letters.charAt(parseInt(Math.random() * letters.length));
+            }
+            return result;
+        }
+
+        function addSquare() {
+
+            let square = document.createElement("div");
+            square.className = "square";
+            square.style.left = parseInt(Math.random() * 900) + "px";
+            square.style.top = parseInt(Math.random() * 600) + "px";
+            square.style.backgroundColor = getRandomColor();
+            square.onclick = squareClick;
+
+
+            let squareArea = document.getElementById("squarearea");
+            squareArea.appendChild(square);
+
+        }
+
+        function changeColor() {
+            let squareArea = document.getElementById("squarearea");
+            let squares = squareArea.getElementsByTagName("div");
+            for (let i = 0; i < squares.length; i++) {
+                squares[i].style.backgroundColor = getRandomColor();
+            }
+        }
+
+        function squareClick() {
+            let oldZ = parseInt(this.style.zIndex);
+            if (oldZ == maxZ) {
+                this.parentNode.removeChild(this);
+            } else {
+                maxZ++;
+                this.style.zIndex = maxZ;
+            }
+        }
+
+    </script>
+
+    <body>
+
+        <div id="squarearea"></div>
+        <div>
+            <button id="add"> Add Squares </button>
+            <button id="colors"> Change Colors </button>
+        </div>
+
+        <p> 
+            Click a square to move it to the front.
+            Click again to delete it.
+        </p>
+
+    </body>
+</html>

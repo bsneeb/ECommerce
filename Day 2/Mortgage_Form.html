@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Title bar </title>
+
+        <style>
+            body {
+                background-color: midnightblue;
+                font-family: sans-serif;
+                font-size: 150%;
+                margin-left: 20%;
+                margin-right: 20%;
+            }
+            h1 {
+                text-align:center;
+            }
+            form {
+                background-color: ghostwhite;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 5%;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <h1> Mortgage Calculator </h1>
+
+        <form>
+            <label for="price"> Home Price </label>
+            <input type="text" id="price" value="10000" size="30"> <br>
+            <label for="downPayment"> Down Payment </label>
+            <input type="text" id="downPayment" value="1234567" size="30" maxlength="10"> <br>
+            <label for="interestRate"> Interest Rate </label>
+            <input type="text" id="interestRate" placeholder="Interest Rate"> <br>
+
+            <br> Mortgage Length <br>
+            <input type="radio" name="term" id="term15" value="15">
+            <label for="term15"> 15 Years </label> <br>
+            <!-- Just putting "15 Years" does not include the new line -->
+            <input type="radio" name="term" id="term30" value="30" checked>
+            <label for="term30"> 30 Years </label> <br>
+
+            <input type="button" value="Monthly Payment"><br><br>
+
+            <label for="monthlyPayment"> Monthly Payment: </label>
+            <input type="text" id="monthlyPayment"> <br>
+            <br>
+            <input type=checkbox name="red" id="red" />
+            <input type="password" name="pass" id="pass">
+            <textarea rows=10 cols=34 name=info id="info"> Initial Content </textarea>
+
+            <select name=colors id=colors size=2>
+                <option value=red>Red</option>
+                <option value=green>Green</option>
+                <option value=blue>Blue</option>
+            </select>
+            <br><br>
+            <input type=reset value=clear />
+            <br>
+            <input type=date name=day id=day>
+            <br>
+            <input type=week name=exams id=exams>
+            <br>
+            <input type=time name=appt id=appt>
+            <br>
+            <input type=color name=sky id=sky>
+            <br>
+            <input type=range name=score id=score min=0 max=10>
+        </form>
+
+    </body>
+</html>

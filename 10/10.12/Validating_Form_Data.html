@@ -1,0 +1,41 @@
+<!-- Brady Neeb -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Title bar </title>
+    </head>
+
+    <script>
+        function validate() {
+            let inputString1 = document.getElementById("test1").value;
+            let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            document.getElementById("test2").innerHTML = re.test(inputString1);
+        }
+    </script>
+
+    <body>
+
+        <table>
+            <tr>
+                <td> Input: </td>
+                <td> <input id="test1" type="text" size=50 /> </td>
+            </tr>
+            <tr>
+                <td colspan=2> <input name=enter type=button value="Test" onclick="validate()"> </td>
+            </tr>
+            <tr>
+                <td> Output: </td>
+                <td id=test2> </td>
+            </tr>
+        </table>
+
+        <select id=items name=items>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+
+        </select>
+
+    </body>
+</html>

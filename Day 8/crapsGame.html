@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Craps Game </title>
+    </head>
+
+    <script>
+        const WON = 0, LOST = 1, CONTINUE_ROLLING = 2; 
+        let firstRoll = true,           // true if first roll
+        myPoint = 0,           // point if no win/loss on first roll
+        gameStatus = CONTINUE_ROLLING;  // game not over yet
+
+        function play() {
+            rollDice();
+        }
+
+        function rollDice() {
+            let die1 = parseFloat(document.getElementById("firstDie").value);
+            let die2 = parseFloat(document.getElementById("secondDie").value);
+
+            Math.floor(1+Math.random() * 6)
+
+            
+
+        }
+
+    </script>
+    <body>
+
+        <h1> Craps Game </h1>
+        <table>
+            <tr><td> Die 1 </td> <td id=firstDie></td></tr>
+            <tr><td> Die 2 </td> <td id=secondDie></td></tr>
+            <tr><td> Sum </td> <td id=sum></td></tr>
+            <tr><td> Point </td> <td id=point></td></tr>
+            <tr> <td colspan=2>
+                <input type=button id=roll value=Roll onclick=play()
+            </td></tr>
+            <tr><td colspan=2 id=comment> Roll Dice to Begin </td></tr>
+
+        </table>
+
+    </body>
+</html>

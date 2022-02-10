@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Flex Boxes </title>
+
+        <style>
+            .flex-container {
+                display: flex;
+                background-color: #333333;
+                justify-content: center;
+                
+            }
+            .inside {
+                background-color: #cccccc;
+                margin: 5%;
+                padding: 5%;
+                font-size: 4em;
+                flex-shrink: 2;
+            }
+
+            @media only screen and (min-width: 601px) {
+                .flex-container {    
+                    flex-direction: column;
+                }
+            }
+
+            @media only screen and (max-width: 600px) {
+                .flex-container {
+                    flex-direction: row;
+                }
+            }
+
+        </style> 
+
+        
+    </head>
+    <body>
+
+        <div class=flex-container>
+            <div class=inside> box 1 </div>
+            <div class=inside> box 2 </div>
+
+    </body>
+</html>

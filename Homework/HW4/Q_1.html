@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Quiz </title>
+        <link rel=stylesheet type=text/css href=hw2.css />
+
+        <script>
+
+            let grade = 0;
+            let correct = 0;
+            
+            //Having trouble with the radio button elements, getting them to recgonize they are being selected
+            function computeGrade(){
+
+                let q1 = 0;
+                let q2 = 0;
+                let q3 = 0;
+                let q4 = 0;
+                let q5 = 0;
+
+                alert(document.getElementById("question4").value)
+                if (document.getElementById("question1").value === "Harley"){
+                    q1 = 1;
+                }
+                if (document.getElementById("question2").value === "Kwini"){
+                    q2 = 1;
+                }
+                if (document.getElementById("question3").value === "False"){
+                    q3 = 1;
+                }
+                if (document.getElementById("question4").value === "False"){
+                    q4 = 1;
+                }
+                if (document.getElementById("question5").value === "Bull"){
+                    q5 = 1;
+                }
+                grade = q1 + q2 + q3 + q4 + q5;
+                document.getElementById("grade").innerHTML = grade;
+            }
+
+        </script>
+    </head>
+    <body>
+        
+        <h1> Page Four - Quiz </h1>
+
+        <div class=quiz>
+            <label for="question1"> <h2> Question 1 </h2></label>
+            <p> What is the name of my dog? </p>
+            <input type="text" id="question1"> 
+            <br> <br> <br> <br> 
+
+            <label for="question2"> <h2> Question 2 </h2></label>
+            <p> What is my favorite golf course? </p>
+            <input type="text" id="question2"> 
+            <br> <br> <br> <br> 
+
+            <label for="question3"> <h2> Question 3 </h2> </label>
+            <p> True or false: My favorite fish to target is Bass </p>
+            <input type="radio" name="question3" id="question3" value="true">
+            <label for="true"> True </label> <br>
+            <input type="radio" name="question3" id="question3" value="false">
+            <label for="false"> False </label> 
+            <br> <br> <br> <br>
+
+            <label for="question4"> <h2> Question 4 </h2> </label>
+            <p> True or false: I have 3 sisters </p>
+            <input type="radio" name="question4" id="question4" value="true">
+            <label for="true"> True </label> <br>
+            <input type="radio" name="question4" id="question4" value="false">
+            <label for="false"> False </label> 
+            <br> <br> <br> <br>
+
+            <label for="question5"> <h2> Question 5 </h2> </label>
+            <p> Which trout is NOT in this region? </p>
+            <input type="radio" name="question5" id="question5" value="rainbow">
+            <label for="rainbow"> Rainbow </label> <br>
+            <input type="radio" name="question5" id="question5" value="brown">
+            <label for="brown"> Brown </label> <br>
+            <input type="radio" name="question5" id="question5" value="bull">
+            <label for="bull"> Bull </label> <br>
+            <input type="radio" name="question5" id="question5" value="brook">
+            <label for="brook"> Brook </label> 
+            <br> <br> <br> <br>
+
+            <input type="button" value="Grade Quiz" onclick=computeGrade()>
+            <br>
+            <span id=grade> </span>
+            <br><br><br>
+        </div>
+        <ol>
+            <li class=toc> <a href="Page_One_HW_2.html"> Page One - Bio </a> </li>
+            <li class=toc> <a href="Page_Two_HW_2.html"> Page Two - Resume </a> </li>
+            <li class=toc> <a href="Page_Three_HW_2.html"> Page Three - Favorites </a> </li>
+            <li class=toc> <a href="Page_Four_HW_2.html"> Page Four - Quiz </a> </li>
+        </ol>
+
+    </body>
+</html>
